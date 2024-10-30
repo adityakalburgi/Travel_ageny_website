@@ -12,9 +12,8 @@ Welcome to **Travel Agency** – a full-stack MERN (MongoDB, Express, React, Nod
 [Live Site Link] — *Add link here when deployed*
 
 ### 📸 Screenshots
-![Screenshot 2024-10-30 193814](https://github.com/user-attachments/assets/950ab8b6-656f-4500-a726-f4935c790dbf)
-
-![Screenshot 2024-10-30 202428](https://github.com/user-attachments/assets/cba48f6c-192d-4a14-a463-311900ab3d2b)
+![Screenshot 2024-10-30 202428](https://github.com/user-attachments/assets/4b0db7cb-0eac-41b9-bf0a-507c4ec0124f)
+![Screenshot 2024-10-30 193814](https://github.com/user-attachments/assets/3a4f18c1-8cae-479c-a033-d31800ec6d2d)
 
 
 ## 🛠️ Tech Stack
