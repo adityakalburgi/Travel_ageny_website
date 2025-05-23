@@ -61,7 +61,7 @@ const Register = () => {
 
                         <Form onSubmit={handleClick}>
                            <FormGroup>
-                              <input type="text" placeholder='Username' id='username' onChange={handleChange} required />
+                              <input type="text" placeholder='Username' id='userName' onChange={handleChange} required />
                            </FormGroup>
                            <FormGroup>
                               <input type="email" placeholder='Email' id='email' onChange={handleChange} required />
