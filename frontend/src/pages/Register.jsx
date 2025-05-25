@@ -9,9 +9,9 @@ import { BASE_URL } from '../utils/config'
 
 const Register = () => {
    const [credentials, setCredentials] = useState({
-      userName: undefined,
-      email: undefined,
-      password: undefined
+      username: '',  // changed from userName to username
+      email: '',
+      password: ''
    })
 
    const {dispatch} = useContext(AuthContext)
@@ -34,7 +34,10 @@ const Register = () => {
          })
          const result = await res.json()
 
-         if(!res.ok) alert(result.message)
+         if(!res.ok) {
+            alert(result.message)
+            return
+         }
 
          dispatch({type:'REGISTER_SUCCESS'})
          navigate('/login')
@@ -61,7 +64,7 @@ const Register = () => {
 
                         <Form onSubmit={handleClick}>
                            <FormGroup>
-                              <input type="text" placeholder='Username' id='userName' onChange={handleChange} required />
+                              <input type="text" placeholder='Username' id='username' onChange={handleChange} required />
                            </FormGroup>
                            <FormGroup>
                               <input type="email" placeholder='Email' id='email' onChange={handleChange} required />
