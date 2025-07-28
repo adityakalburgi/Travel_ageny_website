@@ -9,11 +9,12 @@ import experienceImg from '../assets/images/experience.png'
 import { TypeAnimation } from 'react-type-animation';
 
 import Subtitle from './../shared/subtitle'
-import SearchBar from './../shared/SearchBar'
+import SearchFrom from './../shared/SearchBar'
 import ServiceList from '../services/ServiceList'
 import MasonryImagesGallery from '../components/Image-gallery/MasonryImagesGallery'
 import Testimonials from '../components/Testimonial/Testimonials'
 import NewsLetter from '../shared/Newsletter'
+import SearchForm from './../shared/SearchBar'
 
 const Home = () => {
    return <>
@@ -73,7 +74,7 @@ const Home = () => {
                   </div>
                </Col>
       
-               <SearchBar />
+               <SearchForm />
             </Row>
             
          </Container>
