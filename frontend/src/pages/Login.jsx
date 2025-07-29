@@ -23,7 +23,30 @@ const Login = () => {
    const handleClick = async e => {
       e.preventDefault()
 
-      dispatch({type:'LOGIN_START'})
+      
+
+      const { email, password } = credentials;
+
+     // Basic validation
+      if (!email || !password) {
+         alert("Please fill in all fields.");
+      return;
+      }
+
+      if (password.length < 6) {
+         alert("Password must be at least 6 characters.");
+      return;
+      }
+
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+         alert("Please enter a valid email.");
+      return;
+      }
+
+      dispatch({ type: 'LOGIN_START' });
 
       try {
          const res = await fetch(`${BASE_URL}/auth/login`, {
