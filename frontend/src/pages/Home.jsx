@@ -9,7 +9,7 @@ import experienceImg from '../assets/images/experience.png'
 import { TypeAnimation } from 'react-type-animation';
 
 import Subtitle from './../shared/subtitle'
-import SearchFrom from './../shared/SearchBar'
+import SearchForm from './../shared/SearchBar'
 import ServiceList from '../services/ServiceList'
 import MasonryImagesGallery from '../components/Image-gallery/MasonryImagesGallery'
 import Testimonials from '../components/Testimonial/Testimonials'
