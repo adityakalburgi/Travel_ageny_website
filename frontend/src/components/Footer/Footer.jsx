@@ -33,6 +33,10 @@ const quick__links2 = [
       path: '/register',
       display: 'Register'
    },
+   {
+      path: '/reset-password',
+      display: 'Reset Password'
+   }
 ]
 
 const Footer = () => {
