@@ -73,3 +73,15 @@
       font-size: 1rem;
    }
 }
+
+.input-error {
+   border: 1px solid white;
+}
+
+/* .text-danger {
+   font-size: 0.75rem;
+   color: white;
+   margin-top: 4px;
+} */
+
+
