@@ -1,15 +1,23 @@
 
+
 import React, { useRef, useState } from 'react'
 import './search-bar.css'
 import { Col, Form, FormGroup } from 'reactstrap'
 import { BASE_URL } from '../utils/config'
 import { useNavigate } from 'react-router-dom'
+import { FaMapMarkerAlt, FaRulerHorizontal, FaUsers, FaSearch } from 'react-icons/fa';
 
-const SearchBar = () => {
-   const locationRef = useRef('')
-   const distanceRef = useRef(0)
-   const maxGroupSizeRef = useRef(0)
-   const navigate = useNavigate()
+const SearchForm = () => {
+  const [destination, setDestination] = useState('');
+  const [distance, setDistance] = useState('');
+  const [maxPeople, setMaxPeople] = useState(0);
+    const handlePeopleChange = (e) => {
+    const value = e.target.value;
+    // Only allow positive integers
+    if (value === '' || (/^\d+$/.test(value) && parseInt(value) >= 0)) {
+      setMaxPeople(value);
+    }
+  };
 
    const [errors, setErrors] = useState({
       location: '',
@@ -88,3 +96,4 @@ const SearchBar = () => {
 }
 
 export default SearchBar;
+
