@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import '../styles/home.css'
 import { Container, Row, Col, CardSubtitle } from 'reactstrap'
 import heroImg from '../assets/images/hero-img01.jpg'
@@ -17,6 +18,15 @@ import NewsLetter from '../shared/Newsletter'
 import SearchForm from './../shared/SearchBar'
 
 const Home = () => {
+   const location = useLocation()
+   const galleryRef = useRef(null)
+
+   useEffect(() => {
+      if (location.state?.scrollTo === 'gallery' && galleryRef.current) {
+         galleryRef.current.scrollIntoView({ behavior: 'smooth' })
+      }
+   }, [location.state])
+
    return <>
       {/* ========== HERO SECTION ========== */}
       <section style={{position:'relative', overflow:'hidden'}}>
@@ -49,12 +59,6 @@ const Home = () => {
                         repeat={Infinity}
                      />
                      
-                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Ullam ipsum nobis asperiores soluta voluptas quas voluptates.
-                        Molestiae tempora dignissimos, animi praesentium molestias perferendis
-                        porro expedita delectus. Soluta natus porro.
-                     </p>
                   </div>
                </Col>
 
@@ -137,7 +141,7 @@ const Home = () => {
       {/* ========== EXPERIENCE SECTION END ============== */}
 
       {/* ========== GALLERY SECTION START ============== */}
-      <section style={{backgroundColor:"black"}}>
+      <section ref={galleryRef} style={{backgroundColor:"black"}}>
          <Container>
             <Row>
                <Col lg='12'>
