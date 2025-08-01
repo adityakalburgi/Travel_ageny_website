@@ -40,7 +40,7 @@
    cursor       : pointer;
 }
 
-/* =============== RESPONSIVE ================ */
+
 @media only screen and (max-width:992px) {
    .search__bar {
       width: 100%;
@@ -78,10 +78,5 @@
    border: 1px solid white;
 }
 
-/* .text-danger {
-   font-size: 0.75rem;
-   color: white;
-   margin-top: 4px;
-} */
 
 
