@@ -5,24 +5,15 @@ import Logo1 from '../../assets/images/logo1.png'
 import "./header.css"
 import { AuthContext } from '../../context/AuthContext'
 
+// ✅ Import ThemeContext
+import { ThemeContext } from '../../context/ThemeContext'
+
 // ✅ Added Customer Reviews route here
 const nav__links = [
-   {
-      path: '/home',
-      display: 'Home'
-   },
-   {
-      path: '/about',
-      display: 'About'
-   },
-   {
-      path: '/tours',
-      display: 'Tours'
-   },
-   {
-      path: '/reviews',    // ✅ New nav link
-      display: 'Reviews'
-   },
+   { path: '/home', display: 'Home' },
+   { path: '/about', display: 'About' },
+   { path: '/tours', display: 'Tours' },
+   { path: '/reviews', display: 'Reviews' },  // ✅ New nav link
 ]
 
 const Header = () => {
@@ -30,6 +21,9 @@ const Header = () => {
    const menuRef = useRef(null)
    const navigate = useNavigate()
    const { user, dispatch } = useContext(AuthContext)
+
+   // ✅ Access theme context
+   const { theme, toggleTheme } = useContext(ThemeContext)
 
    const logout = () => {
       dispatch({ type: 'LOGOUT' })
@@ -103,6 +97,11 @@ const Header = () => {
                               </>
                            )
                         }
+
+                        {/* ✅ Theme Toggle Button */}
+                        <Button className='btn primary__btn' onClick={toggleTheme}>
+                           {theme === 'light' ? '🌙 Dark' : '☀ Light'}
+                        </Button>
                      </div>
 
                      <span className="mobile__menu" onClick={toggleMenu}>
