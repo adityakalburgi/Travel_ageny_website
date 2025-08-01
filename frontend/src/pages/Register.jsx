@@ -16,6 +16,8 @@ const Register = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
 
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -26,6 +28,8 @@ const Register = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setSuccessMsg("");
 
     try {
       const res = await fetch(`${BASE_URL}/auth/register`, {
@@ -39,13 +43,19 @@ const Register = () => {
 
       if (!res.ok) {
         alert(result.message);
+        setIsLoading(false);
         return;
       }
 
       dispatch({ type: "REGISTER_SUCCESS" });
-      navigate("/login");
+      setSuccessMsg("Registered successfully!");
+      setIsLoading(false);
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500); // Show message for 1.5 seconds before redirect
     } catch (err) {
       alert(err.message);
+      setIsLoading(false);
     }
   };
 
@@ -108,10 +118,14 @@ const Register = () => {
                   <Button
                     className="btn secondary__btn auth__btn"
                     type="submit"
+                    disabled={isLoading}
                   >
-                    Create Account
+                    {isLoading ? "Creating..." : "Create Account"}
                   </Button>
                 </Form>
+                {successMsg && (
+                  <p style={{ color: "green", marginTop: "10px" }}>{successMsg}</p>
+                )}
                 <p>
                   Already have an account? <Link to="/login">Login</Link>
                 </p>

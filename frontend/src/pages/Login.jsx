@@ -15,6 +15,7 @@ const Login = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Login = () => {
     e.preventDefault();
 
     dispatch({ type: "LOGIN_START" });
+    setIsLoading(true);
 
     try {
       const res = await fetch(`${BASE_URL}/auth/login`, {
@@ -39,13 +41,17 @@ const Login = () => {
       });
 
       const result = await res.json();
-      if (!res.ok) alert(result.message);
+      if (!res.ok){
+        alert(result.message);
+        setIsLoading(false);
+      } 
       console.log(result.data);
 
       dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
       navigate("/");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.message });
+      setIsLoading(false);
     }
   };
 
@@ -99,6 +105,7 @@ const Login = () => {
                   <Button
                     className="btn secondary__btn auth__btn"
                     type="submit"
+                    disabled={isLoading}
                   >
                     Login
                   </Button>
