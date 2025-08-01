@@ -15,7 +15,6 @@ import ServiceList from '../services/ServiceList'
 import MasonryImagesGallery from '../components/Image-gallery/MasonryImagesGallery'
 import Testimonials from '../components/Testimonial/Testimonials'
 import NewsLetter from '../shared/Newsletter'
-import SearchForm from './../shared/SearchBar'
 
 const Home = () => {
    const location = useLocation()
