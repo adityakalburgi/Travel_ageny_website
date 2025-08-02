@@ -1,16 +1,17 @@
 
-import React, { useContext } from 'react';
-import Header from './../Header/Header';
-import Routers from '../../router/Routers';
-import Footer from './../Footer/Footer';
+import React from 'react'
+import Header from './../Header/Header'
+import Routers from '../../router/Routers'
+import Footer from './../Footer/Footer'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 import { ThemeContext } from '../../context/ThemeContext'; // import context
 import "./Layout.css"
 
 
-const Layout = () => {
-   const { theme } = useContext(ThemeContext); // get current theme
 
+const Layout = () => {
    return (
+
 
       <>
       <div className='app-container {theme}'>
@@ -20,12 +21,15 @@ const Layout = () => {
          <main className='main-content'>
          <Routers />
 
+
          </main>
-         <Footer />      
+         <Footer />   
+      <ScrollToTop />
          </div>
       </>
    )
 
+
 }
 
-export default Layout;
+export default Layout
