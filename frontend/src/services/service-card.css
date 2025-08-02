@@ -3,6 +3,9 @@
    border-bottom: 1px solid #faa83586;
    border-right : 1px solid #faa83586;
    border-radius: 0.5rem;
+   transition: all 0.3s ease;
+   position: relative;
+   overflow: hidden;
 }
 
 .service__img {
@@ -30,6 +33,44 @@
 .service__item p {
    font-size: 0.8rem;
    color    : var(--text-color);
+}
+
+/* Clickable service item styles */
+.service__item.clickable {
+   cursor: pointer;
+}
+
+.service__item.clickable:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 10px 25px rgba(250, 168, 53, 0.3);
+   border-color: var(--secondary-color);
+}
+
+.service__overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: linear-gradient(135deg, rgba(250, 168, 53, 0.9), rgba(250, 168, 53, 0.7));
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   transition: opacity 0.3s ease;
+   border-radius: 0.5rem;
+}
+
+.service__item.clickable:hover .service__overlay {
+   opacity: 1;
+}
+
+.service__overlay span {
+   color: white;
+   font-weight: 600;
+   font-size: 0.9rem;
+   text-align: center;
+   padding: 0.5rem;
 }
 
 /* =============== RESPONSIVE ================ */
