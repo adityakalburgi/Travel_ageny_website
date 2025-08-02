@@ -11,6 +11,10 @@ const SearchForm = () => {
   const [destination, setDestination] = useState('');
   const [distance, setDistance] = useState('');
   const [maxPeople, setMaxPeople] = useState(0);
+  const locationRef = useRef();
+  const distanceRef = useRef();
+  const maxGroupSizeRef = useRef();
+  const navigate = useNavigate();
     const handlePeopleChange = (e) => {
     const value = e.target.value;
     // Only allow positive integers
