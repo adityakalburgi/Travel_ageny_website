@@ -3,6 +3,7 @@ import { Card, CardBody } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './tour-card.css'
 import calculateAvgRating from '../utils/avgRating'
+import LazyImage from '../components/LazyImage/LazyImage'
 
 const TourCard = ({ tour }) => {
 
@@ -14,7 +15,11 @@ const TourCard = ({ tour }) => {
       <div className='tour__card'>
          <Card>
             <div className="tour__img">
-               <img src={photo} alt="tour-img" />
+               <LazyImage 
+                  src={photo} 
+                  alt={`${title} in ${city}`}
+                  className="tour-card-image"
+               />
                {featured && <span>Featured</span>}
             </div>
 
