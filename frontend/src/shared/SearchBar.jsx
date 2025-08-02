@@ -7,7 +7,7 @@ import { BASE_URL } from '../utils/config'
 import { useNavigate } from 'react-router-dom'
 import { FaMapMarkerAlt, FaRulerHorizontal, FaUsers, FaSearch } from 'react-icons/fa';
 
-const SearchForm = () => {
+const SearchBar = () => {
   const [destination, setDestination] = useState('');
   const [distance, setDistance] = useState('');
   const [maxPeople, setMaxPeople] = useState(0);
