@@ -1,13 +1,8 @@
 import "./App.css";
-import Layout from './components/Layout/Layout';
-import { ThemeProvider } from './context/ThemeContext'; // import ThemeProvider
+import Layout from './components/Layout/Layout'
 
 function App() {
-   return (
-      <ThemeProvider>
-         <Layout />
-      </ThemeProvider>
-   );
+   return <Layout />;
 }
 
 export default App;

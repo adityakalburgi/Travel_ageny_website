@@ -1,19 +1,16 @@
-import React, { useContext } from 'react';
-import Header from './../Header/Header';
-import Routers from '../../router/Routers';
-import Footer from './../Footer/Footer';
-import { ThemeContext } from '../../context/ThemeContext'; // import context
+import React from 'react'
+import Header from './../Header/Header'
+import Routers from '../../router/Routers'
+import Footer from './../Footer/Footer'
 
 const Layout = () => {
-   const { theme } = useContext(ThemeContext); // get current theme
-
    return (
-      <div className={theme}> {/* Apply theme class to the root wrapper */}
+      <>
          <Header />
          <Routers />
-         <Footer />
-      </div>
-   );
+         <Footer />      
+      </>
+   )
 }
 
-export default Layout;
+export default Layout
