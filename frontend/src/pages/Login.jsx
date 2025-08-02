@@ -24,10 +24,36 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
-    e.preventDefault();
 
-    dispatch({ type: "LOGIN_START" });
+  const handleClick = async (e) => {
+
+        
+      e.preventDefault();
+      const { email, password } = credentials;
+
+     // Basic validation
+      if (!email || !password) {
+         alert("Please fill in all fields.");
+      return;
+      }
+
+      if (password.length < 6) {
+         alert("Password must be at least 6 characters.");
+      return;
+      }
+
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+         alert("Please enter a valid email.");
+      return;
+      }
+
+      dispatch({ type: 'LOGIN_START' });
+
+
+    
     setIsLoading(true);
 
     try {
