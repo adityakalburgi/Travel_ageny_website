@@ -77,6 +77,12 @@ Make sure you have [Node.js](https://nodejs.org/) and [MongoDB](https://www.mong
    ```plaintext
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret
+
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_email_password
+   JWT_RESET_SECRET=your_jwt_reset_secret
+
+   FRONTEND_URL=http://localhost:3000
    ```
 
 4. **Install frontend dependencies**:

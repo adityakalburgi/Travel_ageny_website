@@ -15,6 +15,7 @@ const Login = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -23,10 +24,37 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
-    e.preventDefault();
 
-    dispatch({ type: "LOGIN_START" });
+  const handleClick = async (e) => {
+
+        
+      e.preventDefault();
+      const { email, password } = credentials;
+
+     // Basic validation
+      if (!email || !password) {
+         alert("Please fill in all fields.");
+      return;
+      }
+
+      if (password.length < 6) {
+         alert("Password must be at least 6 characters.");
+      return;
+      }
+
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+         alert("Please enter a valid email.");
+      return;
+      }
+
+      dispatch({ type: 'LOGIN_START' });
+
+
+    
+    setIsLoading(true);
 
     try {
       const res = await fetch(`${BASE_URL}/auth/login`, {
@@ -39,13 +67,17 @@ const Login = () => {
       });
 
       const result = await res.json();
-      if (!res.ok) alert(result.message);
+      if (!res.ok){
+        alert(result.message);
+        setIsLoading(false);
+      } 
       console.log(result.data);
 
       dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
       navigate("/");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.message });
+      setIsLoading(false);
     }
   };
 
@@ -99,10 +131,12 @@ const Login = () => {
                   <Button
                     className="btn secondary__btn auth__btn"
                     type="submit"
+                    disabled={isLoading}
                   >
                     Login
                   </Button>
                 </Form>
+                <p><Link to="/forgot-password">Forgot Password?</Link></p>
                 <p>
                   Don't have an account? <Link to="/register">Create</Link>
                 </p>

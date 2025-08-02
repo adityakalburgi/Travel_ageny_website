@@ -1,112 +1,56 @@
-@import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
-
-:root {
-  --primary-color: #ff7e01;
-  --secondary-color: #faa935;
-  --heading-color: #0b2727;
-  --text-color: #6e7074;
-  --font-name: "Montserrat", sans-serif;
-  --subtitle-font-name: "Island Moments", cursive;
+.dark {
+  --primary-color: #a3c9f9;        /* soft sky blue */
+  --secondary-color: #7aa4e2;      /* pastel cornflower blue */
+  --heading-color: #e2e8f0;        /* light bluish white */
+  --text-color: #cbd5e1;           /* slate gray-blue */
+  background-color: #1e293b;       /* dark slate-blue */
+  color: var(--text-color);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-name);
-}
-
-section {
-  padding: 50px 0px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Headings */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
   color: var(--heading-color);
 }
 
-a {
-  text-decoration: none;
-  color: unset;
-}
-ul {
-  list-style: none;
-}
-
-.primary__btn {
+/* Primary Button */
+.dark .primary__btn {
   background: var(--secondary-color) !important;
-  border: none !important;
-  border-radius: 50px !important;
-  padding: 0.4rem 1.5rem !important;
+  color: #f8fafc !important;
+  border: none;
 }
 
-.primary__btn a {
-  font-size: 1.1rem;
-  text-decoration: none;
-  color: #fff;
-}
-.primary__btn a:hover {
-  color: inherit;
-}
-.secondary__btn {
-  background: transparent !important;
-  color: #0b2727 !important;
-  border: none !important;
-  font-weight: 500 !important;
+/* Secondary Button */
+.dark .secondary__btn {
+  background-color: transparent !important;
+  color: var(--heading-color) !important;
+  border: 1px solid var(--secondary-color);
 }
 
-.secondary__btn a {
-  text-decoration: none;
-  font-size: 1.1rem;
+/* Subtitle Badge */
+.dark .section__subtitle {
+  background: var(--primary-color);
   color: var(--heading-color);
+  padding: 4px 12px;
+  border-radius: 5px;
 }
 
-.secondary__btn a:hover {
-  color: inherit;
+/* Input, Card, Review */
+.dark input,
+.dark .card,
+.dark .review-block {
+  background-color: #334155;       /* medium slate */
+  color: var(--text-color);
+  border: 1px solid #475569;
 }
 
-.section__subtitle {
-  background: var(--secondary-color);
-  font-family: var(--subtitle-font-name);
-  width: max-content;
-  padding: 0px 0.5rem;
-  padding-right: 1rem;
-
-  border-radius: 50px;
-  font-weight: 500;
-  font-size: 1.7rem;
-  color: var(--heading-color);
-}
-
-
-/* =============== RESPONSIVE ================ */
-@media only screen and (max-width:992px) {
-   .primary__btn a,
-   .secondary__btn a {
-      font-size: 0.9rem;
-   }
-
-   .primary__btn,
-   .secondary__btn,
-   .btn-dark {
-      padding: 0.2rem 1.1rem !important;
-   }
-
-   section {
-      padding: 40px 0;
-   }
-}
-
-@media only screen and (max-width: 768px) {
-   .section__subtitle {
-      font-size: 1.3rem;
-   }
+/* Optional: Service or Tour box backgrounds */
+.dark .service__item,
+.dark .tour__item {
+  background-color: #2c3e50;
+  color: var(--text-color);
 }

@@ -1,64 +1,76 @@
-import React, { useRef } from 'react'
-import './search-bar.css'
-import { Col, Form, FormGroup } from 'reactstrap'
-import { BASE_URL } from '../utils/config'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import './search-bar.css';
+import { FaMapMarkerAlt, FaRulerHorizontal, FaUsers, FaSearch } from 'react-icons/fa';
 
-const SearchBar = () => {
-   const locationRef = useRef('')
-   const distanceRef = useRef(0)
-   const maxGroupSizeRef = useRef(0)
-   const navigate = useNavigate()
+const SearchForm = () => {
+  const [destination, setDestination] = useState('');
+  const [distance, setDistance] = useState('');
+  const [maxPeople, setMaxPeople] = useState(0);
+    const handlePeopleChange = (e) => {
+    const value = e.target.value;
+    // Only allow positive integers
+    if (value === '' || (/^\d+$/.test(value) && parseInt(value) >= 0)) {
+      setMaxPeople(value);
+    }
+  };
 
-   const searchHandler = async() => {
-      const location = locationRef.current.value
-      const distance = distanceRef.current.value
-      const maxGroupSize = maxGroupSizeRef.current.value
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle search logic here
+    console.log({ destination, distance, maxPeople });
+  };
 
-      if (location === '' || distance === '' || maxGroupSize === '') {
-         return alert('All fields are required!')
-      }
+  return (
+    <div className="search-form-container">
+      <form onSubmit={handleSubmit} className="search-form">
+        <div className="input-group">
+          <div className="input-icon">
+            <FaMapMarkerAlt />
+          </div>
+          <input
+            type="text"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+            placeholder="Where are you going?"
+            className="search-input"
+          />
+        </div>
+        
+        <div className="input-group">
+          <div className="input-icon">
+            <FaRulerHorizontal />
+          </div>
+          <input
+            type="text"
+            value={distance}
+            onChange={(e) => setDistance(e.target.value)}
+            placeholder="Distance km"
+            className="search-input"
+          />
+        </div>
+        
+        <div className="input-group">
+          <div className="input-icon">
+            <FaUsers />
+          </div>
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="\d*"
+            value={maxPeople}
+            onChange={handlePeopleChange}
+            placeholder="Max People"
+            className="search-input"
+          />
+        </div>
+        
+        <button type="submit" className="search-button">
+          <FaSearch />
+          <span>Search</span>
+        </button>
+      </form>
+    </div>
+  );
+};
 
-      const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`)
-      
-      if(!res.ok) alert('Something went wrong')
-
-      const result = await res.json()
-
-      navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`, {state: result.data})
-   }
-
-   return <Col lg="12">
-      <div className="search__bar">
-         <Form className='d-flex align-items-center gap-4'>
-            <FormGroup className='d-flex gap-3 form__group form__group-fast'>
-               <span><i class='ri-map-pin-line'></i></span>
-               <div>
-                  <h6>Location</h6>
-                  <input type="text" placeholder='Where are you going?' ref={locationRef} />
-               </div>
-            </FormGroup>
-            <FormGroup className='d-flex gap-3 form__group form__group-fast'>
-               <span><i class='ri-map-pin-time-line'></i></span>
-               <div>
-                  <h6>Distance</h6>
-                  <input type="number" placeholder='Distance k/m' ref={distanceRef} />
-               </div>
-            </FormGroup>
-            <FormGroup className='d-flex gap-3 form__group form__group-last'>
-               <span><i class='ri-group-line'></i></span>
-               <div>
-                  <h6>Max People</h6>
-                  <input type="number" placeholder='0' ref={maxGroupSizeRef} />
-               </div>
-            </FormGroup>
-
-            <span className='search__icon' type='submit' onClick={searchHandler}>
-               <i class='ri-search-line'></i>
-            </span>
-         </Form>
-      </div>
-   </Col>
-}
-
-export default SearchBar
+export default SearchForm;
