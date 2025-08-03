@@ -11,6 +11,7 @@ const Layout = () => {
       setIsInitialLoading(false)
    }
 
+   // Show initial loader on first app load
    if (isInitialLoading) {
       return <InitialLoader onLoadingComplete={handleLoadingComplete} />
    }
