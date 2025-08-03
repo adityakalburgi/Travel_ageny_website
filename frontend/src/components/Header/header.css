@@ -1,111 +1,134 @@
-:root {
-   --primary-color     : rgb(7, 7, 7);
-   --secondary-color   : rgb(164, 250, 35);
-   --heading-color     : #080808;
-   --text-color        : #6e7074;
-   --font-name         : "Montserrat", sans-serif;
-   --subtitle-font-name: "Island Moments", cursive;
-}
+/* =================== NEW, STABLE HEADER STYLES =================== */
 
+/* --- General Header & Logo --- */
 .header {
-   width      : 100%;
-   height     : 70px;
-   line-height: 70px;
-   background-color:rgba(52, 58, 64, 0);
-   backdrop-filter: blur(8px);
+  width: 100%;
+  height: 80px;
+  background: transparent;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
-.logo{
-   width: 10%;
+.nav__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 }
 .logo img {
-   width: 70%;
+  width: 100px; /* A good default size */
+  height: auto;
 }
 
-.menu {
-   margin-bottom: 0;
-}
-
-.nav__item a {
-   text-decoration: none;
-   color          : black;
-   font-weight    : 500;
-   font-size      : 1.5rem;
-   
-}
-
-.nav__item a:hover {
-   color: greenyellow;
-   transition: all 0.4s ease;
-}
-
-.nav__item a.active__link {
-   color:greenyellow;
-   -webkit-text-stroke:0.2px black;
-}
-
-.mobile__menu {
-   font-size: 1.3rem;
-   color    : var(--heading-color);
-   display  : none;
-}
-
+/* --- Sticky Header --- */
 .sticky__header {
-   width      : 100%;
-   height     : 70px;
-   line-height: 70px;
-   background-color: rgba(252, 252, 252, 0.9);
-   position   : sticky;
-   top        : 0;
-   left       : 0;
-   z-index    : 999;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-/* =============== RESPONSIVE ================ */
-@media only screen and (max-width:992px) {
-   .logo img {
-      width: 20%;
-   }
-
-   .navigation {
-      width     : 100%;
-      height    : 100%;
-      position  : fixed;
-      top       : 0;
-      left      : 0;
-      background: rgba(255, 255, 255, 0.4);
-      z-index   : 999;
-      display   : none;
-   }
-
-   .menu {
-      position       : absolute;
-      top            : 0;
-      right          : 0;
-      width          : calc(100% - 75%);
-      height         : 100%;
-      background     : #fff;
-      flex-direction : column;
-      line-height    : 0.5rem;
-      justify-content: center;
-      z-index        : 9999;
-   }
-
-   .show__menu {
-      display: block;
-   }
-
-   .mobile__menu {
-      display: block;
-   }
+/* --- Navigation Links --- */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav__item a {
+  text-decoration: none;
+  color: var(--heading-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.nav__item a:hover {
+  color: var(--secondary-color);
+}
+.nav__item a.active__link {
+  color: var(--secondary-color);
 }
 
-/* =============== RESPONSIVE ================ */
+/* --- Right Side Elements --- */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --- Hide mobile-only elements by default --- */
+.mobile__menu,
+.menu__close,
+.nav__btns__mobile {
+  display: none;
+}
+
+/* =================== RESPONSIVE STYLES (MOBILE-FIRST APPROACH) =================== */
+@media only screen and (max-width: 992px) {
+  /* --- Hide desktop elements on mobile --- */
+  .menu,
+  .nav__btns__desktop {
+    display: none;
+  }
+  /* --- Show mobile elements --- */
+  .mobile__menu {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* --- Mobile Navigation Panel --- */
+  .navigation {
+    display: block; 
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    transition: right 0.4s ease;
+  }
+  .navigation.show__menu {
+    right: 0;
+  }
+
+  /* --- Menu list inside the panel --- */
+  .navigation .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start; 
+    padding: 5rem 2rem 2rem 2rem; 
+    gap: 1.5rem;
+    height: 100%;
+    overflow-y: auto;
+  }
+  .navigation .menu .nav__item a {
+    font-size: 1.2rem;
+  }
+  .navigation .menu .nav__btns__mobile {
+    display: block; /* Show buttons inside the menu */
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  /* --- Menu close button --- */
+  .navigation .menu .menu__close {
+    display: block;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--heading-color);
+  }
+}
+
 @media only screen and (max-width: 768px) {
-   .logo img {
-      width: 45%;
-   }
-
-   .menu {
-      width: calc(100% - 50%);
-   }
+  .logo img {
+    width: 90px; 
+  }
 }
