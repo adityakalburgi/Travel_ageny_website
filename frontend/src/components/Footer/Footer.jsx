@@ -22,8 +22,9 @@ const quick__links = [
 
 const quick__links2 = [
    {
-      path: '/gallery',
-      display: 'Gallery'
+      path: '/home',
+      display: 'Gallery',
+      state: { scrollTo: 'gallery' }
    },
    {
       path: '/login',
@@ -33,6 +34,10 @@ const quick__links2 = [
       path: '/register',
       display: 'Register'
    },
+   {
+      path: '/reset-password',
+      display: 'Reset Password'
+   }
 ]
 
 const Footer = () => {
@@ -78,7 +83,7 @@ const Footer = () => {
                      {
                         quick__links.map((item, index) => (
                            <ListGroupItem key={index} className='ps-0 border-0'>
-                              <Link to={item.path}>{item.display}</Link>
+                              <Link to={item.path} onClick={() => { if (item.path === '/home') { window.scrollTo(0, 0); } }}>{item.display}</Link>
                            </ListGroupItem>
                         ))
                      }
@@ -91,7 +96,11 @@ const Footer = () => {
                      {
                         quick__links2.map((item, index) => (
                            <ListGroupItem key={index} className='ps-0 border-0'>
-                              <Link to={item.path}>{item.display}</Link>
+                              <Link to={item.path} state={item.state} onClick={() => { 
+                                 if (item.path === '/login' || item.path === '/register') { 
+                                    setTimeout(() => window.scrollTo(0, 0), 100); 
+                                 } 
+                              }}>{item.display}</Link>
                            </ListGroupItem>
                         ))
                      }

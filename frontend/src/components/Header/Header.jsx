@@ -46,58 +46,57 @@ const Header = () => {
   };
 
   return (
-    <header className="header" ref={headerRef}>
-      <Container>
+  <header className='header' ref={headerRef}>
+     <Container>
         <Row>
-          <div className="nav__wrapper">
-            {/* ========== LOGO ========== */}
-            <div className="logo">
-              <Link to="/home">
-                <img src={Logo} alt="logo" />
-              </Link>
-            </div>
+           <div className="nav__wrapper d-flex align-items-center justify-content-between">
+              {/* ========== LOGO ========== */}
+              <div className="logo">
+                 <img src={Logo} alt="" />
+              </div>
+              {/* ========================== */}
 
-            {/* ========== NAVIGATION ========== */}
-            <div className={`navigation ${menuOpen ? "show__menu" : ""}`}>
-              <ul className="menu">
-                <span className="menu__close" onClick={toggleMenu}>
-                  <i className="ri-close-line"></i>
-                </span>
-                {nav__links.map((item, index) => (
-                  <li className="nav__item" key={index}>
-                    <NavLink
-                      to={item.path}
-                      onClick={() => setMenuOpen(false)} 
-                      className={(navClass) =>
-                        navClass.isActive ? "active__link" : ""
-                      }
-                    >
-                      {item.display}
-                    </NavLink>
+              {/* ========== NAVIGATION ========== */}
+              <div className={`navigation ${menuOpen ? "show__menu" : ""}`}>
+                <ul className="menu">
+                  <span className="menu__close" onClick={toggleMenu}>
+                    <i className="ri-close-line"></i>
+                  </span>
+                  {nav__links.map((item, index) => (
+                    <li className="nav__item" key={index}>
+                      <NavLink
+                        to={item.path}
+                        onClick={() => setMenuOpen(false)} 
+                        className={(navClass) =>
+                          navClass.isActive ? "active__link" : ""
+                        }
+                      >
+                        {item.display}
+                      </NavLink>
+                    </li>
+                  ))}
+                  {/* Mobile buttons are now cleanly inside */}
+                  <li className="nav__btns__mobile">
+                    {user ? (
+                      <div className="d-flex flex-column align-items-center gap-3">
+                        <h5 className="mb-0">{user.username}</h5>
+                        <Button className="btn btn-dark w-100" onClick={logout}>
+                          Logout
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="d-flex flex-column align-items-center gap-3">
+                        <Button className="btn secondary__btn w-100">
+                          <Link to="/login">Login</Link>
+                        </Button>
+                        <Button className="btn primary__btn w-100">
+                          <Link to="/register">Register</Link>
+                        </Button>
+                      </div>
+                    )}
                   </li>
-                ))}
-                {/* Mobile buttons are now cleanly inside */}
-                <li className="nav__btns__mobile">
-                  {user ? (
-                    <div className="d-flex flex-column align-items-center gap-3">
-                      <h5 className="mb-0">{user.username}</h5>
-                      <Button className="btn btn-dark w-100" onClick={logout}>
-                        Logout
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="d-flex flex-column align-items-center gap-3">
-                      <Button className="btn secondary__btn w-100">
-                        <Link to="/login">Login</Link>
-                      </Button>
-                      <Button className="btn primary__btn w-100">
-                        <Link to="/register">Register</Link>
-                      </Button>
-                    </div>
-                  )}
-                </li>
-              </ul>
-            </div>
+                </ul>
+              </div>
 
             {/* ========== DESKTOP BUTTONS & HAMBURGER ICON ========== */}
             <div className="nav__right">
