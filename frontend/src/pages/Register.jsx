@@ -10,7 +10,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
-    username: "", // changed from userName to username
+    username: "",
     email: "",
     password: "",
   });
@@ -124,7 +124,9 @@ const Register = () => {
                   </Button>
                 </Form>
                 {successMsg && (
-                  <p style={{ color: "green", marginTop: "10px" }}>{successMsg}</p>
+                  <p style={{ color: "green", marginTop: "10px" }}>
+                    {successMsg}
+                  </p>
                 )}
                 <p>
                   Already have an account? <Link to="/login">Login</Link>
