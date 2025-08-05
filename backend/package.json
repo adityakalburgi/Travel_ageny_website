@@ -18,9 +18,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.21.2",
+    "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.1.0",
     "mongoose": "^6.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "nodemailer": "^6.9.8"
   }
 }
