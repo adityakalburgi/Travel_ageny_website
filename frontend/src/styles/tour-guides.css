@@ -1,0 +1,60 @@
+.tour-guides-page {
+  padding: 2rem 0;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
+}
+
+.title {
+  color: #faa835;
+  font-weight: 700;
+}
+
+.guide-card-modern {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guide-card-modern:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.guide-avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #faa835;
+  margin-bottom: 1rem;
+}
+
+.guide-card-modern h5 {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.badge-experience {
+  display: inline-block;
+  background: #faa835;
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.guide-card-modern p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0.2rem 0;
+}
+
+.rating {
+  color: #f39c12;
+  font-weight: 500;
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Amit Patel",
+    "experience": "8 years",
+    "languages": "English, Hindi, Gujarati",
+    "rating": "4.8",
+    "photo": "/tour-images/g1.jpg"
+  },
+  {
+    "name": "Sara Khan",
+    "experience": "5 years",
+    "languages": "English, Urdu",
+    "rating": "4.6",
+    "photo": "/tour-images/g2.jpg"
+  },
+  {
+    "name": "Rohan Mehra",
+    "experience": "6 years",
+    "languages": "English, Hindi",
+    "rating": "4.7",
+    "photo": "/tour-images/g3.jpg"
+  },
+  {
+    "name": "Emily Smith",
+    "experience": "7 years",
+    "languages": "English, French",
+    "rating": "4.9",
+    "photo": "/tour-images/g4.jpg"
+  },
+  {
+    "name": "Liam Brown",
+    "experience": "4 years",
+    "languages": "English, Spanish",
+    "rating": "4.5",
+    "photo": "/tour-images/g5.jpg"
+  },
+  {
+    "name": "Noah Lee",
+    "experience": "5 years",
+    "languages": "English, Korean",
+    "rating": "4.7",
+    "photo": "/tour-images/g6.jpg"
+  }
+]

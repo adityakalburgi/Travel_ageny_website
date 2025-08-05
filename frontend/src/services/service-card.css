@@ -1,38 +1,49 @@
 .service__item {
-   padding      : 1rem;
-   border-bottom: 1px solid #faa83586;
-   border-right : 1px solid #faa83586;
-   border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(250, 168, 53, 0.4);
+  border-radius: 0.75rem;
+  background: #fff;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.service__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 .service__img {
-   width          : 50px;
-   height         : 50px;
-   display        : flex;
-   align-items    : center;
-   justify-content: center;
-   border-radius  : 50px;
-   background     : var(--secondary-color);
-   padding        : 0.5rem;
-   margin-bottom  : 1rem;
-   line-height    : 50px;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .service__img img {
-   width: 100%;
+  width: 60%;
 }
 
 .service__item h6 {
-   font-size  : 1.1rem;
-   font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
 }
 
 .service__item p {
-   font-size: 0.8rem;
-   color    : var(--text-color);
-}
-
-/* =============== RESPONSIVE ================ */
-@media only screen and (max-width:992px) {
-   
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
 }
