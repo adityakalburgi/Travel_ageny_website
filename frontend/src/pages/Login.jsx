@@ -8,6 +8,10 @@ import { AuthContext } from "../context/AuthContext";
 import { BASE_URL } from "../utils/config";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
+// Import Firebase auth and the provider
+import { auth, googleProvider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
+
 const Login = () => {
   const [credentials, setCredentials] = useState({
     email: undefined,
@@ -24,36 +28,30 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-
   const handleClick = async (e) => {
+    e.preventDefault();
+    const { email, password } = credentials;
 
-        
-      e.preventDefault();
-      const { email, password } = credentials;
-
-     // Basic validation
-      if (!email || !password) {
-         alert("Please fill in all fields.");
+    // Basic validation
+    if (!email || !password) {
+      alert("Please fill in all fields.");
       return;
-      }
+    }
 
-      if (password.length < 6) {
-         alert("Password must be at least 6 characters.");
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters.");
       return;
-      }
+    }
 
-
-      // Email format validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-         alert("Please enter a valid email.");
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email.");
       return;
-      }
+    }
 
-      dispatch({ type: 'LOGIN_START' });
+    dispatch({ type: "LOGIN_START" });
 
-
-    
     setIsLoading(true);
 
     try {
@@ -67,10 +65,10 @@ const Login = () => {
       });
 
       const result = await res.json();
-      if (!res.ok){
+      if (!res.ok) {
         alert(result.message);
         setIsLoading(false);
-      } 
+      }
       console.log(result.data);
 
       dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
@@ -78,6 +76,26 @@ const Login = () => {
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.message });
       setIsLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    dispatch({ type: "LOGIN_START" });
+    setIsLoading(true);
+
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      // After successful sign-in, the onAuthStateChanged listener
+      // in AuthContext will handle the state update.
+      // We can also dispatch success here to update the UI immediately.
+      dispatch({ type: "LOGIN_SUCCESS", payload: result.user });
+      setIsLoading(false);
+      navigate("/home");
+    } catch (error) {
+      alert(error.message);
+      dispatch({ type: "LOGIN_FAILURE", payload: error.message });
+      setIsLoading(false);
+      console.error("Error signing in with Google: ", error);
     }
   };
 
@@ -133,10 +151,27 @@ const Login = () => {
                     type="submit"
                     disabled={isLoading}
                   >
-                    Login
+                    {isLoading ? 'Logging in...' : 'Login'}
                   </Button>
                 </Form>
-                <p><Link to="/forgot-password">Forgot Password?</Link></p>
+
+                <div className="auth__divider">
+                  <hr />
+                  <span>OR</span>
+                  <hr />
+                </div>
+                
+                <Button
+                  className="btn google__btn auth__btn"
+                  onClick={handleGoogleSignIn}
+                  disabled={isLoading}
+                >
+                   {isLoading ? 'Signing in...' : 'Sign in with Google'}
+                </Button>
+
+                <p>
+                  <Link to="/forgot-password">Forgot Password?</Link>
+                </p>
                 <p>
                   Don't have an account? <Link to="/register">Create</Link>
                 </p>
