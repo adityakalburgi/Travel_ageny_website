@@ -15,6 +15,7 @@ import ServiceList from '../services/ServiceList'
 import MasonryImagesGallery from '../components/Image-gallery/MasonryImagesGallery'
 import Testimonials from '../components/Testimonial/Testimonials'
 import NewsLetter from '../shared/Newsletter'
+import LazyImage from '../components/LazyImage/LazyImage'
 
 const Home = () => {
    const location = useLocation()
@@ -63,7 +64,11 @@ const Home = () => {
 
                <Col lg='2'>
                   <div className="hero__img-box">
-                     <img src={heroImg} alt="" />
+                     <LazyImage 
+                        src={heroImg} 
+                        alt="Travel destination" 
+                        className="hero-image"
+                     />
                   </div>
                </Col>
                <Col lg='2'>
@@ -73,7 +78,11 @@ const Home = () => {
                </Col>
                <Col lg='2'>
                   <div className="hero__img-box mt-5">
-                     <img src={heroImg02} alt="" />
+                     <LazyImage 
+                        src={heroImg02} 
+                        alt="Travel adventure" 
+                        className="hero-image"
+                     />
                   </div>
                </Col>
       
@@ -131,7 +140,11 @@ const Home = () => {
                </Col>
                <Col lg='6'>
                   <div className="experience__img">
-                     <img src={experienceImg} alt="" />
+                     <LazyImage 
+                        src={experienceImg} 
+                        alt="Travel experience" 
+                        className="experience-image"
+                     />
                   </div>
                </Col>
             </Row>
