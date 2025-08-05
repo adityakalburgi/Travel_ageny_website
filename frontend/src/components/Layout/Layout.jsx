@@ -3,6 +3,7 @@ import Header from './../Header/Header'
 import Routers from '../../router/Routers'
 import Footer from './../Footer/Footer'
 import InitialLoader from '../InitialLoader/InitialLoader'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 const Layout = () => {
    const [isInitialLoading, setIsInitialLoading] = useState(true)
@@ -20,7 +21,8 @@ const Layout = () => {
       <>
          <Header />
          <Routers />
-         <Footer />      
+         <Footer />
+         <ScrollToTop />
       </>
    )
 }
