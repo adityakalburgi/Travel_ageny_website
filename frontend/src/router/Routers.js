@@ -7,6 +7,7 @@ import Register from './../pages/Register'
 import SearchResultList from './../pages/SearchResultList'
 import TourDetails from './../pages/TourDetails'
 import Tours from './../pages/Tours'
+import MostVisited from '../pages/MostVisited' // ADD THIS IMPORT
 
 const Routers = () => {
    return (
@@ -19,6 +20,7 @@ const Routers = () => {
          <Route path='/register' element={<Register/>} />
          <Route path='/thank-you' element={<ThankYou/>} />
          <Route path='/tours/search' element={<SearchResultList/>} />
+         <Route path='/most-visited' element={<MostVisited/>} /> {/* ADD THIS ROUTE */}
       </Routes>
    )
 }

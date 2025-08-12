@@ -19,6 +19,10 @@ const nav__links = [
       path: '/tours',
       display: 'Tours'
    },
+   {
+      path: '/most-visited',     
+      display: 'Popular Places'  
+   },
 ]
 
 const Header = () => {
@@ -44,22 +48,21 @@ const Header = () => {
 
    useEffect(() => {
       stickyHeaderFunc()
-
-      return window.removeEventListener('scroll', stickyHeaderFunc)
-   })
+      return () => window.removeEventListener('scroll', stickyHeaderFunc)
+   }, [])
 
    const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
 
    return (
-      <header className='header' ref={headerRef} style={{background:"transparent"}}>
+      <header className='header' ref={headerRef} style={{ background: "transparent" }}>
          <Container>
             <Row>
                <div className="nav__wrapper d-flex align-items-center justify-content-between">
+
                   {/* ========== LOGO ========== */}
                   <div className="logo">
-                     <img src={Logo1} alt="" />
+                     <img src={Logo1} alt="Logo" />
                   </div>
-                  {/* ========================== */}
 
                   {/* ========== MENU START ========== */}
                   <div className="navigation" ref={menuRef} onClick={toggleMenu}>
@@ -67,32 +70,46 @@ const Header = () => {
                         {
                            nav__links.map((item, index) => (
                               <li className="nav__item" key={index}>
-                                 <NavLink to={item.path} className={navClass => navClass.isActive ? 'active__link' : ''}>{item.display}</NavLink>
+                                 <NavLink
+                                    to={item.path}
+                                    className={navClass => navClass.isActive ? 'active__link' : ''}
+                                 >
+                                    {item.display}
+                                 </NavLink>
                               </li>
                            ))
                         }
                      </ul>
                   </div>
-                  {/* ================================ */}
+                  {/* ========== MENU END ========== */}
 
+                  {/* ========== USER/LOGIN BUTTONS ========== */}
                   <div className="nav__right d-flex align-items-center gap-4">
                      <div className="nav__btns d-flex align-items-center gap-2">
                         {
-                           user ? <> <h5 className='mb-0'>{user.username}</h5>
+                           user ? (
+                              <>
+                                 <h5 className='mb-0'>{user.username}</h5>
                                  <Button className='btn btn-dark' onClick={logout}>Logout</Button>
-                              </> : <>
-                                 <Button className='btn secondary__btn'><Link to='/login'>Login</Link></Button>
-                                 <Button className='btn primary__btn'><Link to='/register'>Register</Link></Button>
                               </>
+                           ) : (
+                              <>
+                                 <Button className='btn secondary__btn'>
+                                    <Link to='/login'>Login</Link>
+                                 </Button>
+                                 <Button className='btn primary__btn'>
+                                    <Link to='/register'>Register</Link>
+                                 </Button>
+                              </>
+                           )
                         }
-                        {/* <Button className='btn secondary__btn'><Link to='/login'>Login</Link></Button>
-                        <Button className='btn primary__btn'><Link to='/register'>Register</Link></Button> */}
                      </div>
 
                      <span className="mobile__menu" onClick={toggleMenu}>
-                        <i class="ri-menu-line"></i>
+                        <i className="ri-menu-line"></i>
                      </span>
                   </div>
+
                </div>
             </Row>
          </Container>
