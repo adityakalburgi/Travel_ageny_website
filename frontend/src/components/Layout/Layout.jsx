@@ -4,7 +4,7 @@ import Header from './../Header/Header'
 import Routers from '../../router/Routers'
 import Footer from './../Footer/Footer'
 import ScrollToTop from '../ScrollToTop/ScrollToTop'
-import { ThemeContext } from '../../context/ThemeContext'; // import context
+
 import "./Layout.css"
 
 
@@ -14,7 +14,7 @@ const Layout = () => {
 
 
       <>
-      <div className='app-container {theme}'>
+      <div className='app-container'>
 
 
          <Header />
